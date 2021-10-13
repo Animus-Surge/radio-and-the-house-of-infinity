@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var type = "player"
+
 export(int) var speed = 10
 var velocity = Vector2()
 
