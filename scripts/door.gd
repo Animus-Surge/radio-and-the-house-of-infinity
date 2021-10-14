@@ -16,9 +16,11 @@ func unlock():
 	if not get_parent().get_node("player").has_key : return
 	unlocked = true
 	$Sprite.texture = tex_open
-	remove_child(get_node("CollisionShape2D"))
+	#remove_child(get_node("CollisionShape2D"))
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func lock():
 	unlocked = false
 	$Sprite.texture = tex_closed
-	add_child(collider)
+	#add_child(collider)
+	$CollisionShape2D.set_deferred("disabled", false)
