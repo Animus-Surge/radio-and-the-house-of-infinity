@@ -5,8 +5,6 @@ var type = "player"
 export(int) var speed = 10
 var velocity = Vector2()
 
-var has_key = false
-
 # TODO: keyboard actions
 func _process(delta):
 	pass
