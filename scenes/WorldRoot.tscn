@@ -1,18 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
 [ext_resource path="res://scripts/ui/player-ui.gd" type="Script" id=3]
 [ext_resource path="res://scripts/interaction/impl/door.gd" type="Script" id=4]
 [ext_resource path="res://scripts/global/root.gd" type="Script" id=5]
+[ext_resource path="res://assets/textures/door-locked.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/door-unlocked.png" type="Texture" id=7]
+[ext_resource path="res://scripts/interaction/impl/item.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 36.6164, 60.7968 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 66.4999, 66.8087 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 178.577
+radius = 301.844
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 77.8036
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 5 )
@@ -28,12 +35,9 @@ __meta__ = {
 }
 
 [node name="interactLabel" type="Label" parent="CanvasLayer/UI"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -98.5
-margin_top = 69.0
-margin_right = 98.5
-margin_bottom = 83.0
+anchor_right = 1.0
+margin_top = 64.0
+margin_bottom = 78.0
 text = "Press F to interact with {name}"
 align = 1
 __meta__ = {
@@ -61,11 +65,30 @@ current = true
 [node name="Door" type="StaticBody2D" parent="."]
 position = Vector2( 532.749, 100.141 )
 script = ExtResource( 4 )
+has_lock = true
+open = ExtResource( 7 )
+closed = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Door"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="Door"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
 shape = SubResource( 3 )
+
+[node name="key" type="Node2D" parent="."]
+position = Vector2( -79.29, 153.235 )
+script = ExtResource( 8 )
+type = "key"
+
+[node name="Sprite" type="Sprite" parent="key"]
+
+[node name="Area2D" type="Area2D" parent="key"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="key/Area2D"]
+shape = SubResource( 4 )
