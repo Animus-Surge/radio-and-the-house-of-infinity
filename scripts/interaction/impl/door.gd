@@ -34,6 +34,7 @@ func interact():
 			return
 		has_lock = false #door was unlocked, don't want it locking behind them unless we needed to... I'll do that later
 		opened = true
+		playerstate.player_keys -= 1
 		$Sprite.texture = open
 		$CollisionShape2D.set_deferred("disabled", true)
 	else:

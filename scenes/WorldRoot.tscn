@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/textures/door-locked.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/door-unlocked.png" type="Texture" id=7]
 [ext_resource path="res://scripts/interaction/impl/item.gd" type="Script" id=8]
+[ext_resource path="res://assets/objects/TestItem.tres" type="Resource" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 36.6164, 60.7968 )
@@ -43,6 +44,12 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -239.0
 
 [node name="TileMap" type="TileMap" parent="."]
 cell_size = Vector2( 32, 32 )
@@ -91,4 +98,30 @@ type = "key"
 [node name="Area2D" type="Area2D" parent="key"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="key/Area2D"]
+shape = SubResource( 4 )
+
+[node name="item1" type="Node2D" parent="."]
+position = Vector2( -340.32, -84.8112 )
+script = ExtResource( 8 )
+number = 3
+item = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="item1"]
+
+[node name="Area2D" type="Area2D" parent="item1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item1/Area2D"]
+shape = SubResource( 4 )
+
+[node name="item2" type="Node2D" parent="."]
+position = Vector2( -151.65, -172.64 )
+script = ExtResource( 8 )
+number = 3
+item = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="item2"]
+
+[node name="Area2D" type="Area2D" parent="item2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item2/Area2D"]
 shape = SubResource( 4 )
