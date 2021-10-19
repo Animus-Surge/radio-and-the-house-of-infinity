@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/textures/door-unlocked.png" type="Texture" id=7]
 [ext_resource path="res://scripts/interaction/impl/item.gd" type="Script" id=8]
 [ext_resource path="res://assets/objects/TestItem.tres" type="Resource" id=9]
+[ext_resource path="res://objects/invslot.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 36.6164, 60.7968 )
@@ -51,11 +52,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -239.0
 
+[node name="Inventory" type="Panel" parent="CanvasLayer/UI"]
+anchor_left = 0.037
+anchor_top = 0.153
+anchor_right = 0.428
+anchor_bottom = 0.573
+margin_left = 0.112
+margin_top = 0.199989
+margin_right = -0.272034
+margin_bottom = 0.199982
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Inventory"]
+anchor_right = 1.0
+margin_bottom = 27.0
+text = "Inventory"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="ScrollContainer" parent="CanvasLayer/UI/Inventory"]
+anchor_top = 0.111
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -0.0840015
+margin_right = -4.0
+margin_bottom = -6.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/UI/Inventory/container"]
+margin_right = 392.0
+margin_bottom = 218.112
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 8
+
+[node name="Button" parent="CanvasLayer/UI/Inventory/container/GridContainer" instance=ExtResource( 10 )]
+
 [node name="TileMap" type="TileMap" parent="."]
 cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="player" type="KinematicBody2D" parent="."]
+visible = false
 script = ExtResource( 2 )
 speed = 200
 
@@ -70,6 +117,7 @@ texture = ExtResource( 1 )
 current = true
 
 [node name="Door" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2( 532.749, 100.141 )
 script = ExtResource( 4 )
 has_lock = true
@@ -89,6 +137,7 @@ texture = ExtResource( 6 )
 shape = SubResource( 3 )
 
 [node name="key" type="Node2D" parent="."]
+visible = false
 position = Vector2( -79.29, 153.235 )
 script = ExtResource( 8 )
 type = "key"
@@ -101,6 +150,7 @@ type = "key"
 shape = SubResource( 4 )
 
 [node name="item1" type="Node2D" parent="."]
+visible = false
 position = Vector2( -340.32, -84.8112 )
 script = ExtResource( 8 )
 number = 3
@@ -114,6 +164,7 @@ item = ExtResource( 9 )
 shape = SubResource( 4 )
 
 [node name="item2" type="Node2D" parent="."]
+visible = false
 position = Vector2( -151.65, -172.64 )
 script = ExtResource( 8 )
 number = 3
