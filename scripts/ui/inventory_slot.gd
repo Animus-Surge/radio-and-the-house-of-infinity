@@ -12,8 +12,6 @@ func set_item(i, amount):
 		$Label.text = str(stack)
 	else:
 		$Label.text = ""
-	
-	pass
 
 func clear():
 	item = null

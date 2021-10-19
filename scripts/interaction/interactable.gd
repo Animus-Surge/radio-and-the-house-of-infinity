@@ -19,13 +19,11 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _body_entered(body):
-	if body.type == "player":
-		playerstate.interactable_object = self
+	pass
 
 # warning-ignore:unused_argument
 func _body_exited(body):
-	if body.type == "player":
-		playerstate.interactable_object = null
+	pass
 
 func interact():
 	pass

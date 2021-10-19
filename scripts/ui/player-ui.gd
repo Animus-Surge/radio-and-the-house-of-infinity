@@ -12,6 +12,12 @@ func _ready():
 	interact_label.hide()
 	inventory.hide()
 
+func _process(_delta):
+	if not playerstate.interactable_objects.empty():
+		show_label(playerstate.interactable_objects[-1].text)
+	else:
+		hide_label()
+
 # Interaction label
 func show_label(text):
 	interact_label.text = text

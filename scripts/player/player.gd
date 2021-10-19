@@ -12,7 +12,8 @@ func _process(_delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_F:
-			if playerstate.interactable_object: playerstate.interactable_object.interact()
+			if not playerstate.interactable_objects.empty():
+				playerstate.interactable_objects[-1].object.interact()
 		elif event.pressed and event.scancode == KEY_I:
 			if get_parent().get_node("CanvasLayer/UI/Inventory").visible:
 				get_parent().get_node("CanvasLayer/UI").hide_inventory()

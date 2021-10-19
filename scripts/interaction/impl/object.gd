@@ -64,12 +64,12 @@ func _ready():
 func _body_entered(body):
 	._body_entered(body)
 	if body.type == "player":
-		get_parent().interaction("Press F to interact with " + name)
+		pass
 
 func _body_exited(body):
 	._body_exited(body)
 	if body.type == "player":
-		get_parent().interaction_hide()
+		pass
 
 func interact():
 	if action.empty(): return

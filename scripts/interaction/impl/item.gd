@@ -20,15 +20,14 @@ func _ready():
 func _body_entered(body):
 	._body_entered(body)
 	if body.type == "player":
-		get_parent().interaction("Press F to pick up " + (str(number) + " " if type == "currency" or type == "item" else "") + (type if type == "key" else ("Gold" if type == "currency" else item.name)))
-	pass
+		var text = "Press F to pick up " + (str(number) + " " if type == "currency" or type == "item" else "") + (type if type == "key" else ("Gold" if type == "currency" else item.name))
+		playerstate.add_interaction(self, text)
 
 # warning-ignore:unused_argument
 func _body_exited(body):
 	._body_exited(body)
 	if body.type == "player":
-		get_parent().interaction_hide()
-	pass
+		playerstate.remove_interaction(self)
 
 func interact():
 	if type == "key":
