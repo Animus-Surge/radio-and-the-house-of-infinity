@@ -20,7 +20,7 @@ func _ready():
 func _body_entered(body):
 	._body_entered(body)
 	if body.type == "player":
-		get_parent().interaction("Press F to pick up " + str(number) + " " + (type if type == "key" else ("Gold" if type == "currency" else item.name)))
+		get_parent().interaction("Press F to pick up " + (str(number) + " " if type == "currency" or type == "item" else "") + (type if type == "key" else ("Gold" if type == "currency" else item.name)))
 	pass
 
 # warning-ignore:unused_argument
@@ -34,17 +34,7 @@ func interact():
 	if type == "key":
 		playerstate.player_keys += 1
 	elif type == "item":
-		var resource = item.resource_path
-		for x in range(playerstate.inventory_slots):
-			if playerstate.player_inventory[x].empty(): continue
-			if playerstate.player_inventory[x].item == resource:
-				playerstate.player_inventory[x].count += number
-				queue_free()
-				return
-		for x in range(playerstate.inventory_slots):
-			if playerstate.player_inventory[x].empty():
-				playerstate.player_inventory[x] = {"item":resource,"count":number}
-				break
+		get_parent().get_node("CanvasLayer/UI").add_item(item, number) # TODO: checking and erroring if no space available
 	else:
 		playerstate.gold += number
 	queue_free()

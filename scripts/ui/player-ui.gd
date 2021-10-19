@@ -22,7 +22,7 @@ func hide_label():
 
 # Inventory
 func init_inventory():
-	for x in range(playerstate.inventory_slots):
+	for _x in range(playerstate.inventory_slots):
 		var slot = invslot.instance()
 		inventory.get_node("container/GridContainer").add_child(slot)
 
@@ -37,8 +37,18 @@ func clear_inventory():
 		node.clear()
 
 func add_item(item, count):
-	#First check if any of the slots has an item matching this one
-	#If yes, check if they have space
-		#If not, fill the slot and create a new slot with the rest of the items
-	#If no create a new slot with the item
-	pass
+	var first_empty
+	for node in inventory.get_node("container/GridContainer").get_children():
+		if node.item == item:
+			var space = item.stack_size - node.stack
+			if space + count > item.stack_size:
+				count = (space + count) - item.stack_size
+				continue
+			else:
+				node.amount_change(3)
+				return # Nothing else needed to do, so return from the function
+		elif node.item == null and first_empty == null:
+			first_empty = node
+			continue
+	if first_empty:
+		first_empty.set_item(item, count)

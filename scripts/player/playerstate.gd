@@ -1,10 +1,5 @@
 extends Node
 
-func _ready():
-	for x in range(inventory_slots):
-		player_inventory.append({})
-	pass
-
 #SINGLETON FOR PLAYER STATE
 
 var player_inventory = []

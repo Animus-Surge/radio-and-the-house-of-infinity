@@ -46,12 +46,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/UI"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -239.0
-
 [node name="Inventory" type="Panel" parent="CanvasLayer/UI"]
 anchor_left = 0.037
 anchor_top = 0.153
@@ -102,7 +96,6 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="player" type="KinematicBody2D" parent="."]
-visible = false
 script = ExtResource( 2 )
 speed = 200
 
@@ -117,7 +110,6 @@ texture = ExtResource( 1 )
 current = true
 
 [node name="Door" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( 532.749, 100.141 )
 script = ExtResource( 4 )
 has_lock = true
@@ -137,7 +129,6 @@ texture = ExtResource( 6 )
 shape = SubResource( 3 )
 
 [node name="key" type="Node2D" parent="."]
-visible = false
 position = Vector2( -79.29, 153.235 )
 script = ExtResource( 8 )
 type = "key"
@@ -150,7 +141,6 @@ type = "key"
 shape = SubResource( 4 )
 
 [node name="item1" type="Node2D" parent="."]
-visible = false
 position = Vector2( -340.32, -84.8112 )
 script = ExtResource( 8 )
 number = 3
@@ -164,7 +154,6 @@ item = ExtResource( 9 )
 shape = SubResource( 4 )
 
 [node name="item2" type="Node2D" parent="."]
-visible = false
 position = Vector2( -151.65, -172.64 )
 script = ExtResource( 8 )
 number = 3

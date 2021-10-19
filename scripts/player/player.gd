@@ -14,7 +14,7 @@ func _input(event):
 		if event.pressed and event.scancode == KEY_F:
 			if playerstate.interactable_object: playerstate.interactable_object.interact()
 		elif event.pressed and event.scancode == KEY_I:
-			if get_parent().get_node("CanvasLayer/UI/ItemList").visible:
+			if get_parent().get_node("CanvasLayer/UI/Inventory").visible:
 				get_parent().get_node("CanvasLayer/UI").hide_inventory()
 			else:
 				get_parent().get_node("CanvasLayer/UI").show_inventory()
