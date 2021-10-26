@@ -15,10 +15,10 @@ func _input(event):
 			if not playerstate.interactable_objects.empty():
 				playerstate.interactable_objects[-1].object.interact()
 		elif event.pressed and event.scancode == KEY_I:
-			if get_parent().get_node("CanvasLayer/UI/Inventory").visible:
-				get_parent().get_node("CanvasLayer/UI").hide_inventory()
+			if get_parent().get_parent().get_node("CanvasLayer/UI/Inventory").visible:
+				get_parent().get_parent().get_node("CanvasLayer/UI").hide_inventory()
 			else:
-				get_parent().get_node("CanvasLayer/UI").show_inventory()
+				get_parent().get_parent().get_node("CanvasLayer/UI").show_inventory()
 
 func _physics_process(_delta):
 	var vc = Vector2()

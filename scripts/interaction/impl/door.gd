@@ -34,13 +34,13 @@ func interact():
 		opened = true
 		playerstate.player_keys -= 1
 		$Sprite.texture = open
-		$CollisionShape2D.set_deferred("disabled", true)
+		$door_collider.set_deferred("disabled", true)
 	else:
 		if opened:
 			opened = false
 			$Sprite.texture = closed
-			$CollisionShape2D.set_deferred("disabled", false)
+			$door_collider.set_deferred("disabled", false)
 		else:
 			opened = true
 			$Sprite.texture = open
-			$CollisionShape2D.set_deferred("disabled", true)
+			$door_collider.set_deferred("disabled", true)
